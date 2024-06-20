@@ -24,7 +24,7 @@ padding: 20px o;
 .header select{
     font-size: 1rem;
 }
-.slideshow{
+.slideShow{
     flex: 1;
     background-color: black;
     position: relative;

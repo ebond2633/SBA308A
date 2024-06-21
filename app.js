@@ -90,3 +90,22 @@ currentPosition++
 }
 }
 
+
+
+
+const body = document.getElementById('container')
+const div = document.createElement('div')
+div.style.height = '50px'
+div.style.width = '50px'
+div.style.backgroundColor = 'orange'
+div.style.marginLeft ='45%'
+div.style.marginTop ='15%'
+body.appendChild(div)
+
+div.addEventListener('mouseover', event => {
+    div.style.backgroundColor = 'red'
+})
+
+div.addEventListener('mouseleave', event => {
+    div.style.backgroundColor = 'orange'
+})

@@ -12,23 +12,41 @@ async function fetchData(){
 }
 
 fetchData()
-
 function createBreedList(breedList){
-    document.getElementById("breed").innerHTML =`
-    
-     <select onchange="loadByBreed(this.value)">
-     <option>Choose a dog Breed</option>
-     ${Object.keys(breedList).map(function (breed){
-        return`<option>${breed}</option>`
-     }).join("")}
-    </select>  
-    `  
+    const breed = document.getElementById("breed")
+    const select = document.createElement('select')
+    const optionPrompt = document.createElement('option')
+    optionPrompt.innerHTML='Choose a dog'
+    select.addEventListener('change', (event) => {
+        loadByBreed(event.target.value)
+    })
+
+    select.append(optionPrompt)
+    breed.append(select)
+    Object.keys(breedList).map(curBreed => {
+        const breedOptions = document.createElement('option')
+        breedOptions.innerHTML = curBreed
+        select.append(breedOptions)
+     })
 }
+
+// function createBreedList(breedList){
+//     document.getElementById("breed").innerHTML =`
+    
+//      <select onchange="loadByBreed(this.value)">
+//      <option>Choose a dog Breed</option>
+//      ${Object.keys(breedList).map(function (breed){
+//         return`<option>${breed}</option>`
+//      }).join("")}
+//     </select>  
+//     `  
+// }
 
  async function loadByBreed(breed){ 
     if(breed!="Choose a dog Breed"){
         const response = await fetch (`https://dog.ceo/api/breed/${breed}/images`)
         const data = await response.json()
+        console.log(data)
         createSlideShow(data.message)
         
     }

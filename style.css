@@ -29,6 +29,7 @@ body{
 }
 
 .slide{
+    margin-top: 50px;
     position: absolute;
     min-height: 600px;
     top: 60px;
